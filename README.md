@@ -2,11 +2,11 @@
 
 Static risk and quality linting for **Model Context Protocol (MCP)** tool manifests.
 
-MCP tool metadata now includes input/output schemas and behavioral hints such as `readOnlyHint`, `destructiveHint`, `idempotentHint`, and `openWorldHint`. Those hints are useful for client UX, but they are explicitly hints rather than guarantees. MCP Surface turns common manifest mistakes and risky metadata combinations into deterministic, reviewable CI findings. citeturn1search8turn1search12
+MCP tool metadata includes input/output schemas and behavioral hints such as `readOnlyHint`, `destructiveHint`, `idempotentHint`, and `openWorldHint`. Those hints are useful for client UX, but they are not guarantees of runtime behavior. MCP Surface turns common manifest mistakes and risky metadata combinations into deterministic, reviewable CI findings.
 
 ## Why this exists
 
-MCP servers are increasingly used as building blocks for agentic workflows. A broken schema, duplicate tool name, missing description, or contradictory annotation can make a tool harder to discover or cause clients to make poor preflight decisions. The current MCP specification also moved tool schemas to full JSON Schema 2020-12, increasing the surface area worth validating. citeturn1search2turn1search12
+MCP servers are increasingly used as building blocks for agentic workflows. A broken schema, duplicate tool name, missing description, or contradictory annotation can make a tool harder to discover or cause clients to make poor preflight decisions. The current MCP specification also moved tool schemas to full JSON Schema 2020-12, increasing the surface area worth validating.
 
 MCP Surface is intentionally **offline, deterministic, dependency-free at runtime, and CI-friendly**. It does not connect to an MCP server and it does not execute tools.
 
@@ -69,7 +69,7 @@ The CLI accepts either a JSON object containing a `tools` array or a JSON array 
 | MCP009 | warning | Tool is marked potentially destructive |
 | MCP010 | info | Tool is marked open-world |
 
-The analyzer deliberately reports annotation issues as **risk signals**, not proof of behavior. MCP maintainers describe these annotations as untrusted hints that clients should not treat as security guarantees. citeturn1search8
+The analyzer deliberately reports annotation issues as **risk signals**, not proof of behavior. Treat MCP annotations as untrusted metadata rather than security guarantees.
 
 ## CI
 
